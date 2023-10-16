@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protoype Exercise</title>
+    <script>
+        function shapes(shape){
+            this.shape=shape;
+            this.getType=function(){
+                alert("The shape is :"+shape);
+            }
+        }
+        function Triangle(a,b,c){
+            this.a=a;
+            this.b=b;
+            this.c=c;
+            this.getPerimeter=function(){
+                alert(this.a+this.b+this.c);
+            }
+        }
+        function Circle(r){
+            this.r=r;
+            this.getArea=function(){
+                alert((Math.PI*this.r)/2);
+            }
+            this.getCircumference=function(){
+                alert((2*Math.PI)*this.r);
+            }
+        }
+        function Rectangle(a,b){
+            this.a=a;
+            this.b=b || 0;
+            this.getArea=function(){
+                alert(this.a*this.b);
+            }
+            if(this.b==0){
+                alert("Its a square");
+            }
+        }
+        function proto(){
+            Triangle.prototype=new shapes("Triangle");
+            var t=new Triangle(1,2,3);
+            t.getType();
+            t.getPerimeter();
+            Circle.prototype=new shapes("Circle");
+            var c=new Circle(4);
+            c.getType();
+            c.getCircumference();
+            c.getArea();
+            Rectangle.prototype=new shapes("Rectangle");
+            var r=new Rectangle(2,3);
+            r.getType();
+            r.getArea();
+            var s=new Rectangle(2);
+            s.getArea();
+        }
+        proto();
+    </script>
+</head>
+<body>
+    <p>Triangle Exercise</p>
+    <footer style="text-align: center;">
+        <p>&copy; KRUTHIK B 2023 (V_5718) | <a href="">GitHub</a></p>
+    </footer>
+</body>
+</html>
